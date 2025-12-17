@@ -1,17 +1,20 @@
-# claude-sesh
+<div align="center">
 
-#### Session Explorer for Claude Code | Find, Search & Resume Past Sessions
+# 🗂️ claude-sesh
 
-[![npm version](https://img.shields.io/npm/v/claude-sesh.svg)](https://www.npmjs.com/package/claude-sesh)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](package.json)
-[![MCP](https://img.shields.io/badge/MCP-enabled-D4A574.svg)](https://modelcontextprotocol.io)
+### Session Explorer for Claude Code
 
-[Quick Start](#quick-start) •
-[Web Dashboard](#web-dashboard) •
-[CLI Commands](#cli-commands) •
-[MCP Integration](#mcp-integration) •
-[Configuration](#configuration)
+**Find, search, and resume all your past sessions**
+
+[![npm version](https://img.shields.io/npm/v/claude-sesh.svg?style=flat-square)](https://www.npmjs.com/package/claude-sesh)
+[![npm downloads](https://img.shields.io/npm/dm/claude-sesh.svg?style=flat-square)](https://www.npmjs.com/package/claude-sesh)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg?style=flat-square)](package.json)
+[![MCP](https://img.shields.io/badge/MCP-enabled-D4A574.svg?style=flat-square)](https://modelcontextprotocol.io)
+
+[Install](#quick-start) · [Dashboard](#web-dashboard) · [CLI](#cli-commands) · [MCP](#mcp-integration-optional) · [Docs](#configuration)
+
+</div>
 
 ---
 
