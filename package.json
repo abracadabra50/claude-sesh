@@ -1,0 +1,63 @@
+{
+  "name": "claude-sesh",
+  "version": "1.0.0",
+  "description": "Session explorer for Claude Code - find, search, and resume all your past sessions",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "session-explorer",
+    "analytics",
+    "token-usage",
+    "cost-tracking",
+    "ai-coding",
+    "developer-tools",
+    "cli",
+    "dashboard",
+    "session-history",
+    "mcp",
+    "llm"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abracadabra50/claude-sesh.git"
+  },
+  "homepage": "https://github.com/abracadabra50/claude-sesh#readme",
+  "bugs": {
+    "url": "https://github.com/abracadabra50/claude-sesh/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "claude-sesh": "./dist/cli.js",
+    "sesh": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./parser": "./dist/services/parser.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "web": "node dist/web/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "express": "^4.21.0",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
