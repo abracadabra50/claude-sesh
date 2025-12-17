@@ -668,4 +668,48 @@ function formatTokens(tokens: number): string {
   return `${(tokens / 1000000).toFixed(2)}M`;
 }
 
+// Parse fixture command for CI smoke tests
+program
+  .command('parse-fixture <file>')
+  .description('Parse a session fixture file (for testing)')
+  .action(async (file) => {
+    const fs = await import('fs');
+    const path = await import('path');
+
+    const filePath = path.resolve(file);
+    if (!fs.existsSync(filePath)) {
+      console.error(colors.error(`File not found: ${filePath}`));
+      process.exit(1);
+    }
+
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const lines = content.trim().split('\n').filter(l => l.trim());
+
+    let userMessages = 0;
+    let assistantMessages = 0;
+    let toolCalls = 0;
+    let totalTokens = 0;
+
+    for (const line of lines) {
+      try {
+        const entry = JSON.parse(line);
+        if (entry.type === 'user') userMessages++;
+        if (entry.type === 'assistant') assistantMessages++;
+        if (entry.type === 'tool_use') toolCalls++;
+        if (entry.type === 'result' && entry.cost) {
+          totalTokens += (entry.cost.input_tokens || 0) + (entry.cost.output_tokens || 0);
+        }
+      } catch (e) {
+        console.error(colors.error(`Failed to parse line: ${line.slice(0, 50)}...`));
+      }
+    }
+
+    console.log(colors.success('✓ Fixture parsed successfully'));
+    console.log(colors.beige(`  Lines: ${lines.length}`));
+    console.log(colors.beige(`  User messages: ${userMessages}`));
+    console.log(colors.beige(`  Assistant messages: ${assistantMessages}`));
+    console.log(colors.beige(`  Tool calls: ${toolCalls}`));
+    console.log(colors.beige(`  Total tokens: ${totalTokens}`));
+  });
+
 program.parse();
