@@ -37,7 +37,41 @@ claude-sesh makes it easy to find, search, and resume all your Claude Code sessi
 - 📊 **Usage Analytics** - Track tokens, costs, and time across all sessions
 - 🏷️ **AI Enrichment** - Auto-generate summaries and tags for better search
 - 🧠 **MCP Integration** - Let Claude search your session history
-- 🏆 **Global Leaderboard** - Compare stats with other Claude Code users *(coming soon)*
+- 🏆 **Community Stats** - Opt-in anonymous benchmarks to see how your usage compares *(coming soon)*
+
+---
+
+## Get Started in 60 Seconds
+
+```bash
+# 1. Run the dashboard (no install needed)
+npx claude-sesh web
+```
+
+**What happens:** Opens `http://localhost:3847` in your browser with your full Claude Code history.
+
+```bash
+# 2. (Optional) Install globally for the CLI
+npm install -g claude-sesh
+
+# List your recent sessions
+sesh list
+
+# Search across all conversations
+sesh search "authentication"
+
+# Get stats
+sesh stats
+```
+
+**Expected output:**
+```
+📊 Total Sessions: 142
+💰 Total Cost: $847.23
+⏱️  Total Time: 312h 45m
+```
+
+That's it. No config, no setup, no API keys needed.
 
 ---
 
