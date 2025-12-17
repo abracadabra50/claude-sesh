@@ -799,30 +799,66 @@ function getDashboardHTML(): string {
     }
 
     /* Sessions */
-    .sessions { display: flex; flex-direction: column; gap: 12px; }
+    .sessions { display: flex; flex-direction: column; gap: 16px; }
 
     .session {
       background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 20px;
+      border-radius: 16px;
+      padding: 0;
       border: 1px solid var(--border);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .session::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light, #E8D5C4));
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
     .session:hover {
       border-color: var(--accent);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
     }
+
+    .session:hover::before { opacity: 1; }
+
+    .session-inner { padding: 20px; }
 
     .session-header {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 14px;
+      margin-bottom: 14px;
     }
+
+    .session-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+      color: white;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--accent), #B8956A);
+    }
+
+    .session-avatar.model-opus { background: linear-gradient(135deg, #7C3AED, #A855F7); }
+    .session-avatar.model-sonnet { background: linear-gradient(135deg, var(--accent), #B8956A); }
+    .session-avatar.model-haiku { background: linear-gradient(135deg, #10B981, #34D399); }
 
     .session-main { flex: 1; min-width: 0; }
 
@@ -830,64 +866,121 @@ function getDashboardHTML(): string {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 4px;
-    }
-
-    .session-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--accent-soft), #fff);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
+      margin-bottom: 6px;
     }
 
     .session-name {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: var(--text);
+    }
+
+    .session-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .session-time {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .session-time::before { content: '🕐'; font-size: 11px; }
+
+    .session-duration {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .session-duration::before { content: '⏱️'; font-size: 11px; }
+
+    .session-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .session:hover .session-actions { opacity: 1; }
+
+    .session-action-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .session-action-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .session-badges {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       flex-shrink: 0;
+      align-items: center;
     }
 
     .session-model {
-      background: var(--accent-soft);
+      background: linear-gradient(135deg, var(--accent-soft), #F5E6D3);
       color: var(--accent);
-      padding: 4px 10px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .session-model.model-opus {
+      background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+      color: #7C3AED;
+    }
+
+    .session-model.model-haiku {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      color: #059669;
+    }
+
+    .session-sentiment {
+      padding: 5px 12px;
       border-radius: 20px;
       font-size: 11px;
       font-weight: 600;
     }
 
-    .session-sentiment {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .sentiment-productive { background: #D1FAE5; color: #059669; }
-    .sentiment-challenging { background: #FEE2E2; color: #DC2626; }
-    .sentiment-exploratory { background: #DBEAFE; color: #2563EB; }
-    .sentiment-maintenance { background: #E5E7EB; color: #6B7280; }
+    .sentiment-productive { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); color: #059669; }
+    .sentiment-challenging { background: linear-gradient(135deg, #FEE2E2, #FECACA); color: #DC2626; }
+    .sentiment-exploratory { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); color: #2563EB; }
+    .sentiment-maintenance { background: linear-gradient(135deg, #F3F4F6, #E5E7EB); color: #6B7280; }
 
     /* Star/Bookmark button */
     .session-star {
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       padding: 4px;
       margin: -4px;
       opacity: 0.3;
@@ -897,35 +990,56 @@ function getDashboardHTML(): string {
 
     .session-star:hover {
       opacity: 1;
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
-    .session-star.starred {
-      opacity: 1;
+    .session-star.starred { opacity: 1; }
+    .session:hover .session-star { opacity: 0.6; }
+    .session:hover .session-star.starred { opacity: 1; }
+
+    /* Summary section */
+    .session-summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: 10px;
+      border-left: 3px solid var(--border);
     }
 
-    .session:hover .session-star {
-      opacity: 0.6;
+    .session-summary.has-enriched {
+      color: var(--text);
+      border-left-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent-soft), transparent);
     }
 
-    .session:hover .session-star.starred {
-      opacity: 1;
-    }
-
-    /* User tags (distinct from AI tags) */
-    .session-user-tags {
+    /* Tags section */
+    .session-tags-section {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
+      margin-bottom: 14px;
     }
 
     .session-user-tag {
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 3px 10px;
-      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #B8956A);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .session-tag {
+      background: var(--bg);
+      color: var(--text-secondary);
+      padding: 4px 12px;
+      border-radius: 14px;
       font-size: 11px;
       font-weight: 500;
+      border: 1px solid var(--border);
     }
 
     /* Note indicator */
@@ -934,66 +1048,96 @@ function getDashboardHTML(): string {
       color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin-top: 8px;
-      font-style: italic;
+      gap: 6px;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: #FFFBEB;
+      border-radius: 8px;
+      border: 1px solid #FDE68A;
     }
 
-    .session-note-indicator::before {
-      content: '📝';
+    .session-note-indicator::before { content: '📝'; }
+
+    /* Stats grid */
+    .session-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
-    .session-summary {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 12px;
+    .session-stat-card {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
     }
 
-    .session-summary.has-enriched {
+    .session-stat-icon {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .session-stat-value {
+      font-size: 16px;
+      font-weight: 700;
       color: var(--text);
     }
 
-    .session-tags {
+    .session-stat-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .session-stat-card.highlight {
+      background: linear-gradient(135deg, var(--accent-soft), #F5E6D3);
+    }
+
+    .session-stat-card.highlight .session-stat-value {
+      color: var(--accent);
+    }
+
+    /* Files section */
+    .session-files-section {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .session-tag {
-      background: var(--bg);
-      color: var(--text-secondary);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .session-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 12px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
     }
 
-    .session-stats { display: flex; gap: 16px; flex-wrap: wrap; }
-
-    .session-stat {
+    .session-file {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 12px;
+      gap: 4px;
+      padding: 4px 10px;
+      background: var(--bg);
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-family: 'SF Mono', Monaco, monospace;
+    }
+
+    .session-file.written { border-left: 2px solid #10B981; }
+    .session-file.edited { border-left: 2px solid #3B82F6; }
+
+    .session-files-more {
+      padding: 4px 10px;
+      font-size: 11px;
       color: var(--text-muted);
     }
 
-    .session-stat.highlight { color: var(--accent); font-weight: 600; }
+    /* Legacy support */
+    .session-footer { display: none; }
+    .session-stats { display: none; }
+    .session-tags { display: none; }
+    .session-user-tags { display: none; }
 
-    .session-files {
-      font-size: 11px;
-      color: var(--text-muted);
-      white-space: nowrap;
+    @media (max-width: 600px) {
+      .session-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .session-actions { opacity: 1; }
     }
 
     @media (max-width: 900px) {
@@ -2510,43 +2654,88 @@ function getDashboardHTML(): string {
       const tags = s.enriched?.tags || [];
       const userTags = s.userTags || [];
       const sentiment = s.enriched?.sentiment;
-      const fileCount = (s.filesWritten?.length || 0) + (s.filesEdited?.length || 0);
       const isStarred = s.starred || false;
       const hasNote = s.userNote && s.userNote.trim().length > 0;
 
       const sentimentClass = sentiment ? 'sentiment-' + sentiment : '';
       const sentimentLabel = sentiment ? sentiment.charAt(0).toUpperCase() + sentiment.slice(1) : '';
 
+      // Model class for styling
+      const modelClass = s.model?.includes('opus') ? 'model-opus' : s.model?.includes('haiku') ? 'model-haiku' : 'model-sonnet';
+
+      // Project initials for avatar
+      const initials = s.projectName.split(/[-_\\s]/).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+
+      // Files
+      const filesWritten = s.filesWritten || [];
+      const filesEdited = s.filesEdited || [];
+      const allFiles = [...filesWritten.map(f => ({name: f, type: 'written'})), ...filesEdited.map(f => ({name: f, type: 'edited'}))];
+      const showFiles = allFiles.slice(0, 4);
+      const moreFiles = allFiles.length - 4;
+
       return \`
         <div class="session" onclick="showSession('\${s.id}')">
-          <div class="session-header">
-            <button class="session-star \${isStarred ? 'starred' : ''}" onclick="event.stopPropagation(); toggleStar('\${s.id}', this)" title="\${isStarred ? 'Unstar session' : 'Star session'}">
-              \${isStarred ? '⭐' : '☆'}
-            </button>
-            <div class="session-main">
-              <div class="session-title-row">
-                <div class="session-icon">📁</div>
-                <span class="session-name">\${s.projectName}</span>
+          <div class="session-inner">
+            <div class="session-header">
+              <div class="session-avatar \${modelClass}">\${initials}</div>
+              <div class="session-main">
+                <div class="session-title-row">
+                  <span class="session-name">\${s.projectName}</span>
+                  <button class="session-star \${isStarred ? 'starred' : ''}" onclick="event.stopPropagation(); toggleStar('\${s.id}', this)" title="\${isStarred ? 'Unstar' : 'Star'}">
+                    \${isStarred ? '⭐' : '☆'}
+                  </button>
+                </div>
+                <div class="session-meta">
+                  <span class="session-time">\${s.timeFormatted}</span>
+                  <span class="session-duration">\${s.durationFormatted}</span>
+                </div>
               </div>
-              <div class="session-time">\${s.timeFormatted} · \${s.durationFormatted}</div>
+              <div class="session-badges">
+                \${sentiment ? \`<span class="session-sentiment \${sentimentClass}">\${sentimentLabel}</span>\` : ''}
+                <span class="session-model \${modelClass}">\${s.modelFormatted}</span>
+              </div>
             </div>
-            <div class="session-badges">
-              \${sentiment ? \`<span class="session-sentiment \${sentimentClass}">\${sentimentLabel}</span>\` : ''}
-              <span class="session-model">\${s.modelFormatted}</span>
+
+            \${summary ? \`<div class="session-summary \${s.enriched ? 'has-enriched' : ''}">\${summary}</div>\` : ''}
+
+            \${(userTags.length || tags.length) ? \`
+              <div class="session-tags-section">
+                \${userTags.map(t => \`<span class="session-user-tag">#\${t}</span>\`).join('')}
+                \${tags.slice(0, 4).map(t => \`<span class="session-tag">\${t}</span>\`).join('')}
+              </div>
+            \` : ''}
+
+            \${hasNote ? \`<div class="session-note-indicator">\${s.userNote.substring(0, 80)}\${s.userNote.length > 80 ? '...' : ''}</div>\` : ''}
+
+            <div class="session-stats-grid">
+              <div class="session-stat-card">
+                <div class="session-stat-icon">💬</div>
+                <div class="session-stat-value">\${s.messageCount}</div>
+                <div class="session-stat-label">Messages</div>
+              </div>
+              <div class="session-stat-card">
+                <div class="session-stat-icon">🔧</div>
+                <div class="session-stat-value">\${s.toolCallCount}</div>
+                <div class="session-stat-label">Tools</div>
+              </div>
+              <div class="session-stat-card highlight">
+                <div class="session-stat-icon">📊</div>
+                <div class="session-stat-value">\${s.tokensFormatted}</div>
+                <div class="session-stat-label">Tokens</div>
+              </div>
+              <div class="session-stat-card">
+                <div class="session-stat-icon">💰</div>
+                <div class="session-stat-value">\${s.costFormatted}</div>
+                <div class="session-stat-label">Cost</div>
+              </div>
             </div>
-          </div>
-          \${summary ? \`<div class="session-summary \${s.enriched ? 'has-enriched' : ''}">\${summary}</div>\` : ''}
-          \${userTags.length ? \`<div class="session-user-tags">\${userTags.map(t => \`<span class="session-user-tag">#\${t}</span>\`).join('')}</div>\` : ''}
-          \${tags.length ? \`<div class="session-tags">\${tags.slice(0, 4).map(t => \`<span class="session-tag">\${t}</span>\`).join('')}</div>\` : ''}
-          \${hasNote ? \`<div class="session-note-indicator">\${s.userNote.substring(0, 60)}\${s.userNote.length > 60 ? '...' : ''}</div>\` : ''}
-          <div class="session-footer">
-            <div class="session-stats">
-              <span class="session-stat">💬 \${s.messageCount}</span>
-              <span class="session-stat">🔧 \${s.toolCallCount}</span>
-              <span class="session-stat highlight">📊 \${s.tokensFormatted}</span>
-              <span class="session-stat" style="color: var(--success); font-weight: 600;">💰 \${s.costFormatted}</span>
-            </div>
-            \${fileCount > 0 ? \`<span class="session-files">📄 \${fileCount} file\${fileCount > 1 ? 's' : ''}</span>\` : ''}
+
+            \${showFiles.length > 0 ? \`
+              <div class="session-files-section">
+                \${showFiles.map(f => \`<span class="session-file \${f.type}">\${f.name.split('/').pop()}</span>\`).join('')}
+                \${moreFiles > 0 ? \`<span class="session-files-more">+\${moreFiles} more</span>\` : ''}
+              </div>
+            \` : ''}
           </div>
         </div>
       \`;
