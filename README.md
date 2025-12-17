@@ -126,6 +126,13 @@ sesh enrich --stats
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
+│  AI Enrichment (optional, via Anthropic SDK)                │
+│  • Auto-generate summaries for each session                 │
+│  • Extract key decisions and problems solved                │
+│  • Add tags for better searchability                        │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
 │  Web Dashboard & CLI for exploration                        │
 │  • Search all sessions                                      │
 │  • View analytics & trends                                  │
