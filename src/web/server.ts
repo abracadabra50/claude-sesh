@@ -818,8 +818,8 @@ function getDashboardHTML(): string {
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light, #E8D5C4));
+      height: 3px;
+      background: var(--accent);
       opacity: 0;
       transition: opacity 0.2s ease;
     }
@@ -853,12 +853,12 @@ function getDashboardHTML(): string {
       flex-shrink: 0;
       color: white;
       text-transform: uppercase;
-      background: linear-gradient(135deg, var(--accent), #B8956A);
+      background: var(--accent);
     }
 
-    .session-avatar.model-opus { background: linear-gradient(135deg, #7C3AED, #A855F7); }
-    .session-avatar.model-sonnet { background: linear-gradient(135deg, var(--accent), #B8956A); }
-    .session-avatar.model-haiku { background: linear-gradient(135deg, #10B981, #34D399); }
+    .session-avatar.model-opus { background: #7C3AED; }
+    .session-avatar.model-sonnet { background: var(--accent); }
+    .session-avatar.model-haiku { background: #10B981; }
 
     .session-main { flex: 1; min-width: 0; }
 
@@ -943,23 +943,21 @@ function getDashboardHTML(): string {
     }
 
     .session-model {
-      background: linear-gradient(135deg, var(--accent-soft), #F5E6D3);
+      background: var(--accent-soft);
       color: var(--accent);
       padding: 5px 12px;
       border-radius: 20px;
       font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-weight: 600;
     }
 
     .session-model.model-opus {
-      background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+      background: #EDE9FE;
       color: #7C3AED;
     }
 
     .session-model.model-haiku {
-      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      background: #D1FAE5;
       color: #059669;
     }
 
@@ -970,10 +968,10 @@ function getDashboardHTML(): string {
       font-weight: 600;
     }
 
-    .sentiment-productive { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); color: #059669; }
-    .sentiment-challenging { background: linear-gradient(135deg, #FEE2E2, #FECACA); color: #DC2626; }
-    .sentiment-exploratory { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); color: #2563EB; }
-    .sentiment-maintenance { background: linear-gradient(135deg, #F3F4F6, #E5E7EB); color: #6B7280; }
+    .sentiment-productive { background: #D1FAE5; color: #059669; }
+    .sentiment-challenging { background: #FEE2E2; color: #DC2626; }
+    .sentiment-exploratory { background: #DBEAFE; color: #2563EB; }
+    .sentiment-maintenance { background: #F3F4F6; color: #6B7280; }
 
     /* Star/Bookmark button */
     .session-star {
@@ -1012,7 +1010,7 @@ function getDashboardHTML(): string {
     .session-summary.has-enriched {
       color: var(--text);
       border-left-color: var(--accent);
-      background: linear-gradient(135deg, var(--accent-soft), transparent);
+      background: var(--accent-soft);
     }
 
     /* Tags section */
@@ -1024,7 +1022,7 @@ function getDashboardHTML(): string {
     }
 
     .session-user-tag {
-      background: linear-gradient(135deg, var(--accent), #B8956A);
+      background: var(--accent);
       color: white;
       padding: 4px 12px;
       border-radius: 14px;
@@ -1092,7 +1090,7 @@ function getDashboardHTML(): string {
     }
 
     .session-stat-card.highlight {
-      background: linear-gradient(135deg, var(--accent-soft), #F5E6D3);
+      background: var(--accent-soft);
     }
 
     .session-stat-card.highlight .session-stat-value {
