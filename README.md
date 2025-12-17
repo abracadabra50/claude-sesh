@@ -16,6 +16,12 @@
 
 </div>
 
+<br />
+
+<p align="center">
+  <img src="assets/dashboard.png" alt="claude-sesh dashboard" width="800" />
+</p>
+
 ---
 
 **Claude Code buries your sessions in `~/.claude/projects/`. Good luck finding that conversation from last week.**
