@@ -2,205 +2,286 @@
 
 # 🗂️ claude-sesh
 
-### Session Explorer for Claude Code
+### Your Claude Code sessions, organized.
 
-**Find, search, and resume all your past sessions**
+<br />
 
-[![npm version](https://img.shields.io/npm/v/claude-sesh.svg?style=flat-square)](https://www.npmjs.com/package/claude-sesh)
-[![npm downloads](https://img.shields.io/npm/dm/claude-sesh.svg?style=flat-square)](https://www.npmjs.com/package/claude-sesh)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg?style=flat-square)](package.json)
-[![MCP](https://img.shields.io/badge/MCP-enabled-D4A574.svg?style=flat-square)](https://modelcontextprotocol.io)
+**Claude Code buries your sessions in `~/.claude/projects/`.**
+**Good luck finding that conversation from last week.**
 
-[Install](#quick-start) · [Dashboard](#web-dashboard) · [CLI](#cli-commands) · [MCP](#mcp-integration-optional) · [Docs](#configuration)
+<br />
+
+[![npm version](https://img.shields.io/npm/v/claude-sesh.svg?style=for-the-badge&color=D4A574)](https://www.npmjs.com/package/claude-sesh)
+[![npm downloads](https://img.shields.io/npm/dm/claude-sesh.svg?style=for-the-badge&color=8B7355)](https://www.npmjs.com/package/claude-sesh)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![MCP](https://img.shields.io/badge/MCP-enabled-D4A574.svg?style=for-the-badge)](https://modelcontextprotocol.io)
+
+<br />
+
+```bash
+npx claude-sesh web
+```
+
+**One command. Zero config. Your entire Claude Code history.**
+
+<br />
+
+[Features](#features) · [Quick Start](#quick-start) · [Dashboard](#-web-dashboard) · [CLI](#-cli-commands) · [MCP](#-mcp-integration)
+
+<br />
+
+<img src="assets/dashboard.png" alt="claude-sesh dashboard" width="800" />
 
 </div>
 
 <br />
 
-<p align="center">
-  <img src="assets/dashboard.png" alt="claude-sesh dashboard" width="800" />
-</p>
+---
+
+<br />
+
+## Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔍 Session Explorer
+
+**Find any conversation instantly.**
+
+Browse your complete Claude Code history with powerful filtering by project, date, model, and more. Never lose track of that perfect solution again.
+
+</td>
+<td width="50%">
+
+### 🔎 Full-Text Search
+
+**Search across everything.**
+
+Find sessions by code snippets, error messages, or any text. Search spans all your conversations, tool calls, and outputs.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 📊 Usage Analytics
+
+**Know where your tokens go.**
+
+Track costs, token usage, and coding time across all sessions. See breakdowns by project, model, and time period.
+
+</td>
+<td width="50%">
+
+### 🔄 Easy Resume
+
+**Pick up where you left off.**
+
+Get rich context summaries to continue any session. Copy resume prompts or use Claude's native resume feature.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🏷️ AI Enrichment
+
+**Auto-generated insights.**
+
+Let AI summarize sessions, extract key decisions, and add searchable tags. Powered by your Anthropic API key.
+
+</td>
+<td width="50%">
+
+### 🧠 MCP Integration
+
+**Give Claude memory.**
+
+Let Claude search your past sessions directly. Ask "How did I solve this before?" and get real answers.
+
+</td>
+</tr>
+</table>
+
+<br />
 
 ---
 
-**Claude Code buries your sessions in `~/.claude/projects/`. Good luck finding that conversation from last week.**
-
-claude-sesh makes it easy to find, search, and resume all your Claude Code sessions. Browse your full history in a beautiful dashboard, search across every conversation, and pick up exactly where you left off.
-
-**Key Features:**
-
-- 🔍 **Session Explorer** - Browse and find any past session instantly
-- 🔎 **Full-Text Search** - Search across all your conversations and projects
-- 📋 **Easy Resume** - Get rich context to continue any session
-- 🌐 **Web Dashboard** - Beautiful UI with timelines, search, and session details
-- 📊 **Usage Analytics** - Track tokens, costs, and time across all sessions
-- 🏷️ **AI Enrichment** - Auto-generate summaries and tags for better search
-- 🧠 **MCP Integration** - Let Claude search your session history
-- 🏆 **Community Stats** - Opt-in anonymous benchmarks to see how your usage compares *(coming soon)*
-
----
-
-## Get Started in 60 Seconds
-
-```bash
-# 1. Run the dashboard (no install needed)
-npx claude-sesh web
-```
-
-**What happens:** Opens `http://localhost:3847` in your browser with your full Claude Code history.
-
-```bash
-# 2. (Optional) Install globally for the CLI
-npm install -g claude-sesh
-
-# List your recent sessions
-sesh list
-
-# Search across all conversations
-sesh search "authentication"
-
-# Get stats
-sesh stats
-```
-
-**Expected output:**
-```
-📊 Total Sessions: 142
-💰 Total Cost: $847.23
-⏱️  Total Time: 312h 45m
-```
-
-That's it. No config, no setup, no API keys needed.
-
----
+<br />
 
 ## Quick Start
 
-### Install
+<table>
+<tr>
+<td>
 
-```bash
-npm install -g claude-sesh
-```
-
-Or use directly with npx:
+### ⚡ Try instantly
 
 ```bash
 npx claude-sesh web
 ```
 
-### Launch Dashboard
+Opens `http://localhost:3847` with your full Claude Code history.
+
+**No install. No config. No API keys.**
+
+</td>
+<td>
+
+### 📦 Install globally
+
+```bash
+npm install -g claude-sesh
+```
+
+Then use the CLI anywhere:
+
+```bash
+sesh list          # List sessions
+sesh search "bug"  # Search conversations
+sesh stats         # View analytics
+sesh web           # Launch dashboard
+```
+
+</td>
+</tr>
+</table>
+
+<br />
+
+---
+
+<br />
+
+## 🖥️ Web Dashboard
 
 ```bash
 sesh web
-# Opens at http://localhost:3847
 ```
+
+<br />
+
+<table>
+<tr>
+<td align="center" width="33%">
+<h3>📈</h3>
+<b>Stats at a Glance</b><br/>
+<sub>Total tokens, cost, hours coded</sub>
+</td>
+<td align="center" width="33%">
+<h3>📅</h3>
+<b>Activity Heatmap</b><br/>
+<sub>GitHub-style contribution graph</sub>
+</td>
+<td align="center" width="33%">
+<h3>⏱️</h3>
+<b>Session Timeline</b><br/>
+<sub>Visual history of all your work</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<h3>🏆</h3>
+<b>Leaderboards</b><br/>
+<sub>Top projects, tools, models</sub>
+</td>
+<td align="center" width="33%">
+<h3>🔍</h3>
+<b>Deep Search</b><br/>
+<sub>Find by content, project, date</sub>
+</td>
+<td align="center" width="33%">
+<h3>📋</h3>
+<b>Session Details</b><br/>
+<sub>Full context for any session</sub>
+</td>
+</tr>
+</table>
+
+<br />
 
 ---
 
-## Web Dashboard
+<br />
 
+## 💻 CLI Commands
+
+<table>
+<tr>
+<td width="50%">
+
+**Browse Sessions**
 ```bash
-sesh web
+sesh list              # Recent sessions
+sesh ls -n 50          # Last 50 sessions
+sesh show <id>         # Session details
+sesh projects          # List all projects
 ```
 
-Beautiful warm beige aesthetic featuring:
+</td>
+<td width="50%">
 
-- **Stats Overview** - Total tokens, cost, hours coded at a glance
-- **Activity Heatmap** - GitHub-style contribution graph for your coding
-- **Session Timeline** - Visual history of all your work
-- **Leaderboards** - Top projects, most-used tools, model breakdown
-- **Session Details** - Deep dive into any session with full context
-- **Search** - Find sessions by content, project, or date
-
----
-
-## CLI Commands
-
+**Search & Find**
 ```bash
-# List recent sessions
-sesh list
-sesh ls -n 50
-
-# Show session details
-sesh show <session-id>
-
-# Search sessions
-sesh search "authentication"
-
-# Find sessions to resume
-sesh continue
-
-# Resume with Claude's native resume
-sesh resume <session-id> --native
-
-# Get resume context (copies to clipboard)
-sesh resume <session-id> --copy
-
-# Show overall statistics
-sesh stats
-
-# List all projects
-sesh projects
-
-# Start web dashboard
-sesh web
-
-# Enrich sessions with AI summaries
-sesh enrich --limit 20
-sesh enrich --stats
+sesh search "auth"     # Full-text search
+sesh continue          # Find resumable sessions
+sesh stats             # Overall statistics
 ```
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Resume Work**
+```bash
+sesh resume <id>           # Get resume context
+sesh resume <id> --copy    # Copy to clipboard
+sesh resume <id> --native  # Use Claude's resume
+```
+
+</td>
+<td width="50%">
+
+**AI Features**
+```bash
+sesh enrich            # Generate AI summaries
+sesh enrich --limit 20 # Enrich 20 sessions
+sesh enrich --stats    # Check progress
+```
+
+</td>
+</tr>
+</table>
+
+<br />
 
 ---
 
-## How It Works
+<br />
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Claude Code writes sessions to ~/.claude/projects/        │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  claude-sesh parses & aggregates session data               │
-│  • Token counts, costs, duration                            │
-│  • Tool usage breakdown                                     │
-│  • File changes tracked                                     │
-│  • Errors captured                                          │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  AI Enrichment (optional, via Anthropic SDK)                │
-│  • Auto-generate summaries for each session                 │
-│  • Extract key decisions and problems solved                │
-│  • Add tags for better searchability                        │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Web Dashboard & CLI for exploration                        │
-│  • Search all sessions                                      │
-│  • View analytics & trends                                  │
-│  • Resume past work                                         │
-└─────────────────────────────────────────────────────────────┘
-```
+## 🧠 MCP Integration
 
-**No extra storage** - claude-sesh reads Claude's existing session files. Your data stays local.
-
----
-
-## MCP Integration (Optional)
-
-Want Claude to be able to search your past sessions? Add the MCP server:
+**Give Claude access to your session history.**
 
 ```bash
 claude mcp add claude-sesh --scope user -- npx claude-sesh mcp
 ```
 
-Restart Claude Code. Now Claude can answer questions like:
-- "What was I working on in this project?"
-- "How did I solve the caching issue before?"
-- "What files have changed recently?"
+Restart Claude Code. Now ask things like:
 
-**Available MCP Tools:**
+> *"What was I working on in this project?"*
+> *"How did I solve the caching issue before?"*
+> *"What files have changed recently?"*
+
+<br />
+
+<details>
+<summary><b>Available MCP Tools</b></summary>
+
+<br />
 
 | Tool | Description |
 |------|-------------|
@@ -213,117 +294,154 @@ Restart Claude Code. Now Claude can answer questions like:
 | `get_file_history` | Track changes to specific files |
 | `get_recent_activity` | Summary of recent coding activity |
 
+</details>
+
+<br />
+
 ---
 
-## AI Enrichment
+<br />
 
-Generate summaries and tags for sessions:
+## 🏷️ AI Enrichment
+
+**Auto-generate summaries and tags for better search.**
 
 ```bash
-# Requires ANTHROPIC_API_KEY
 export ANTHROPIC_API_KEY=your-key
-
-# Enrich 10 sessions
 sesh enrich
-
-# Check enrichment progress
-sesh enrich --stats
 ```
 
-Enrichment extracts:
-- **Summary** - What was accomplished
-- **Decisions** - Key choices made
-- **Problems** - Issues encountered and solutions
-- **Tags** - Auto-categorization
+<table>
+<tr>
+<td width="25%" align="center"><b>📝 Summary</b><br/><sub>What was accomplished</sub></td>
+<td width="25%" align="center"><b>🎯 Decisions</b><br/><sub>Key choices made</sub></td>
+<td width="25%" align="center"><b>🐛 Problems</b><br/><sub>Issues & solutions</sub></td>
+<td width="25%" align="center"><b>🏷️ Tags</b><br/><sub>Auto-categorization</sub></td>
+</tr>
+</table>
+
+<br />
 
 ---
+
+<br />
+
+## How It Works
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│  Claude Code writes sessions to ~/.claude/projects/           │
+│  ↓                                                             │
+│  claude-sesh parses & aggregates session data                  │
+│  • Token counts, costs, duration                               │
+│  • Tool usage breakdown                                        │
+│  • File changes tracked                                        │
+│  ↓                                                             │
+│  AI Enrichment (optional)                                      │
+│  • Auto-generate summaries                                     │
+│  • Extract key decisions                                       │
+│  • Add searchable tags                                         │
+│  ↓                                                             │
+│  Web Dashboard & CLI                                           │
+│  • Search all sessions                                         │
+│  • View analytics & trends                                     │
+│  • Resume past work                                            │
+└────────────────────────────────────────────────────────────────┘
+```
+
+**Your data stays local.** claude-sesh reads Claude's existing session files. Nothing is uploaded anywhere.
+
+<br />
+
+---
+
+<br />
+
+## 🔒 Privacy & Security
+
+<table>
+<tr>
+<td align="center">💾<br/><b>100% Local</b><br/><sub>All data stays on your machine</sub></td>
+<td align="center">👀<br/><b>Read-Only</b><br/><sub>Never modifies Claude's files</sub></td>
+<td align="center">📡<br/><b>No Telemetry</b><br/><sub>Zero data collection</sub></td>
+</tr>
+</table>
+
+<br />
+
+---
+
+<br />
 
 ## Configuration
 
-### Web Dashboard
+<details>
+<summary><b>Change Dashboard Port</b></summary>
 
-Default port is 3847. Change with:
 ```bash
 sesh web --port 8080
 ```
 
-### Data Location
+</details>
 
-Claude Code stores sessions at:
+<details>
+<summary><b>Data Locations</b></summary>
+
+Claude Code sessions:
 ```
 ~/.claude/projects/[project-path]/[session-id].jsonl
 ```
 
-claude-sesh stores enriched data at:
+Enriched data (optional):
 ```
 ~/.claude-sesh/enriched/[session-id].json
 ```
 
----
+</details>
 
-## Development
+<details>
+<summary><b>Troubleshooting</b></summary>
 
+**Dashboard not loading?**
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/claude-sesh.git
-cd claude-sesh
-
-# Install dependencies
-npm install
-
-# Build
-npm run build
-
-# Run locally
-node dist/cli.js list
-
-# Watch mode
-npm run dev
+lsof -i :3847        # Check if port in use
+sesh web --port 8080 # Try different port
 ```
 
----
-
-## Troubleshooting
-
-**Web dashboard not loading?**
-- Check if port 3847 is in use: `lsof -i :3847`
-- Try a different port: `sesh web --port 8080`
-
-**Search returning no results?**
+**Search returning nothing?**
 - Try broader search terms
-- Run `sesh enrich` to add AI-generated metadata for better search
+- Run `sesh enrich` to improve searchability
 
-**MCP tools not available?**
-- Restart Claude Code after adding the MCP server
-- Check `claude mcp list` shows "Connected"
+**MCP not working?**
+- Restart Claude Code after adding MCP server
+- Verify with `claude mcp list`
 
----
+</details>
 
-## Privacy & Security
-
-- **All data stays local** - Nothing is sent to external servers (except AI enrichment which uses your own API key)
-- **Read-only** - claude-sesh only reads Claude's session files, never modifies them
-- **No telemetry** - No usage data collected
+<br />
 
 ---
+
+<br />
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and our roadmap.
+
+<br />
 
 ---
 
-## License
+<br />
 
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-## Related Projects
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) - Anthropic's agentic coding tool
-- [Model Context Protocol](https://modelcontextprotocol.io) - Open protocol for AI context sharing
-
----
+<div align="center">
 
 **Built for the Claude Code community** ❤️
+
+[Report Bug](https://github.com/abracadabra50/claude-sesh/issues) · [Request Feature](https://github.com/abracadabra50/claude-sesh/issues) · [Discussions](https://github.com/abracadabra50/claude-sesh/discussions)
+
+<br />
+
+MIT License · [Claude Code](https://docs.anthropic.com/en/docs/claude-code) · [Model Context Protocol](https://modelcontextprotocol.io)
+
+</div>
