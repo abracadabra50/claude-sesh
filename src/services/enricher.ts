@@ -11,6 +11,21 @@ if (!fs.existsSync(ENRICHED_DIR)) {
   fs.mkdirSync(ENRICHED_DIR, { recursive: true });
 }
 
+// Session IDs are UUID-shaped filenames. Anything else (path separators,
+// "..", absolute paths) could escape ENRICHED_DIR when joined below.
+const SAFE_SESSION_ID = /^[A-Za-z0-9_-]+$/;
+
+function enrichedPathFor(sessionId: string): string {
+  if (!SAFE_SESSION_ID.test(sessionId)) {
+    throw new Error(`Invalid session ID: ${sessionId}`);
+  }
+  const resolved = path.resolve(ENRICHED_DIR, `${sessionId}.json`);
+  if (path.dirname(resolved) !== path.resolve(ENRICHED_DIR)) {
+    throw new Error(`Invalid session ID: ${sessionId}`);
+  }
+  return resolved;
+}
+
 export class SessionEnricher {
   private client: Anthropic | null = null;
 
@@ -43,15 +58,23 @@ export class SessionEnricher {
    * Check if a session is already enriched
    */
   isEnriched(sessionId: string): boolean {
-    const enrichedPath = path.join(ENRICHED_DIR, `${sessionId}.json`);
-    return fs.existsSync(enrichedPath);
+    try {
+      return fs.existsSync(enrichedPathFor(sessionId));
+    } catch {
+      return false;
+    }
   }
 
   /**
    * Get enriched data for a session
    */
   getEnrichedData(sessionId: string): EnrichedSession | null {
-    const enrichedPath = path.join(ENRICHED_DIR, `${sessionId}.json`);
+    let enrichedPath: string;
+    try {
+      enrichedPath = enrichedPathFor(sessionId);
+    } catch {
+      return null;
+    }
     if (!fs.existsSync(enrichedPath)) return null;
     try {
       return JSON.parse(fs.readFileSync(enrichedPath, 'utf-8'));
@@ -139,7 +162,7 @@ Only include items that are clearly evident from the session. Keep arrays short 
 
       // Save to disk
       fs.writeFileSync(
-        path.join(ENRICHED_DIR, `${sessionId}.json`),
+        enrichedPathFor(sessionId),
         JSON.stringify(enriched, null, 2)
       );
 
